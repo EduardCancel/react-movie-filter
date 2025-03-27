@@ -23,10 +23,12 @@ export default function App() {
   return (
 
     <>
-      <div>
-        <h1>Movie Filter</h1>
+      <div className="container">
+        <div className="text-center mb-4 mt-4 ">
+          <h1>Movie Filter</h1>
+        </div>
         {/* Input for the filter */}
-        <select onChange={(e) => setSearchGenre(e.target.value)}>
+        <select className="form-select mb-3 " onChange={(e) => setSearchGenre(e.target.value)}>
           <option value="">All</option>
           <option value="Fantascienza">Fantascienza</option>
           <option value="Thriller">Thriller</option>
@@ -35,14 +37,19 @@ export default function App() {
         </select>
 
         {/* Display the movies */}
-        <ul>
-          {filterMovies.map((movie, index) => (
-            <li key={index}>
-              {movie.title} - {movie.genre}
-            </li>
-          ))}
-        </ul>
+        <div className="card">
+          <div className="card-body ">
 
+          </div>
+          <ul className="list-unstyled mx-4">
+            {/* Map the movies list */}
+            {filterMovies.map((movie, index) => (
+              <li key={index}>
+                {movie.title} - {movie.genre}
+              </li>
+            ))}
+          </ul>
+        </div>
 
       </div>
 
