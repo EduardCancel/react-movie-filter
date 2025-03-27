@@ -9,11 +9,15 @@ export default function App() {
 
 
   useEffect(() => {
-    const filteredMovies = movies.filter((movie) => {
-      return movie.genre.toLowerCase().includes(searchGenre.toLowerCase());
-    });
 
-    setFilterMovies(filteredMovies);
+    if (searchGenre === "") {
+      setFilterMovies(movies);
+      return;
+    } else {
+      setFilterMovies(movies.filter(movie => movie.genre === searchGenre));
+    }
+
+
   }, [searchGenre]);
 
   return (
@@ -22,11 +26,23 @@ export default function App() {
       <div>
         <h1>Movie Filter</h1>
         {/* Input for the filter */}
-        <input type="text"
-          placeholder="Search by genre"
-          value={searchGenre}
-          onChange={(e) => setSearchGenre(e.target.value)}
-        />
+        <select onChange={(e) => setSearchGenre(e.target.value)}>
+          <option value="">All</option>
+          <option value="Fantascienza">Fantascienza</option>
+          <option value="Thriller">Thriller</option>
+          <option value="Romantico">Romantico</option>
+          <option value="Azione">Azione</option>
+        </select>
+
+        {/* Display the movies */}
+        <ul>
+          {filterMovies.map((movie, index) => (
+            <li key={index}>
+              {movie.title} - {movie.genre}
+            </li>
+          ))}
+        </ul>
+
 
       </div>
 
