@@ -19,7 +19,17 @@ export default function App() {
   return (
 
     <>
-      <h1>Movie Filter</h1>
+      <div>
+        <h1>Movie Filter</h1>
+        {/* Input for the filter */}
+        <input type="text"
+          placeholder="Search by genre"
+          value={searchGenre}
+          onChange={(e) => setSearchGenre(e.target.value)}
+        />
+
+      </div>
+
 
 
 
